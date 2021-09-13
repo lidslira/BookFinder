@@ -2,7 +2,7 @@ import {Reducer} from 'redux';
 import {UserTypes, UserState} from './types';
 
 const INITIAL_STATE: UserState = {
-  isLoggedIn: true,
+  isLoggedIn: false,
   currentUser: {
     fullName: '',
     email: '',

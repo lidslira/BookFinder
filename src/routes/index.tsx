@@ -15,30 +15,38 @@ import {createTheme} from '~/shared/utils/theme';
 import {ApplicationState} from '~/shared/store';
 
 const Stack = createStackNavigator();
+const LoginStack = createStackNavigator();
 
 const RootStack: React.FC = () => {
   const {theme} = useSelector((state: ApplicationState) => state.theme);
+  const {isLoggedIn} = useSelector((state: ApplicationState) => state.user);
+
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: 'white'}}>
       <ThemeProvider theme={createTheme(theme)}>
         <NavigationContainer>
-          <Stack.Navigator
-            initialRouteName={LOGIN_SCREEN}
-            screenOptions={{
-              gestureEnabled: false,
-              animationEnabled: false,
-            }}>
-            <Stack.Screen
-              name={LOGIN_SCREEN}
-              component={Login}
-              options={{header: () => <Header />}}
-            />
-            <Stack.Screen
-              name={TABS_SCREEN}
-              component={Tabs}
-              options={{header: () => <Header />}}
-            />
-          </Stack.Navigator>
+          {isLoggedIn ? (
+            <Stack.Navigator>
+              <Stack.Screen
+                name={TABS_SCREEN}
+                component={Tabs}
+                options={{header: () => <Header />}}
+              />
+            </Stack.Navigator>
+          ) : (
+            <LoginStack.Navigator
+              initialRouteName={LOGIN_SCREEN}
+              screenOptions={{
+                gestureEnabled: false,
+                animationEnabled: false,
+              }}>
+              <LoginStack.Screen
+                name={LOGIN_SCREEN}
+                component={Login}
+                options={{header: () => <Header />}}
+              />
+            </LoginStack.Navigator>
+          )}
         </NavigationContainer>
       </ThemeProvider>
     </SafeAreaView>
