@@ -1,8 +1,11 @@
 import React, {useState, useContext} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import {ThemeContext} from 'styled-components';
 import {useFormik} from 'formik';
 import {useNavigation} from '@react-navigation/core';
 import validationSchema from './validations';
+
+import {loginAction} from '~/shared/store/ducks/user/actions';
 
 import * as S from './styles';
 import Button from '~/shared/components/GlobalButton';
@@ -17,12 +20,13 @@ interface DataFormProps {
 
 const Login: React.FC = () => {
   const {Colors} = useContext(ThemeContext);
-
+  const dispatch = useDispatch();
   const navigation = useNavigation();
   const [showPassword, setShowPassword] = useState(false);
 
   const login = (data: DataFormProps) => {
     console.log(data);
+    dispatch(loginAction(data.email, data.password));
     navigation.navigate(TABS_SCREEN);
   };
 

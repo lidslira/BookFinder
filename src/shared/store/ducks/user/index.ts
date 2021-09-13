@@ -3,15 +3,13 @@ import {UserTypes, UserState} from './types';
 
 const INITIAL_STATE: UserState = {
   isLoggedIn: true,
-  username: '',
-  password: '',
-  fullname: '',
-  age: 0,
-  gender: '',
-  address: {
-    city: '',
-    state: '',
+  currentUser: {
+    fullName: '',
+    email: '',
+    password: '',
+    birthDate: '',
     country: '',
+    image: '',
   },
 };
 
@@ -27,14 +25,17 @@ const reducer: Reducer<UserState> = (
       return {
         ...state,
         isLoggedIn: true,
-        username: payload.username,
-        password: payload.password,
+        currentUser: {
+          ...state.currentUser,
+          email: payload.email,
+          password: payload.password,
+        },
       };
 
     case UserTypes.SET_INFORMATION_USER:
       return {
         ...state,
-        currentUser: payload.currentUser,
+        currentUser: payload.data,
       };
 
     default:

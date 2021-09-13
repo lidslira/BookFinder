@@ -5,6 +5,7 @@ const validationSchema = Yup.object().shape({
   email: Yup.string().email('Email inválido').required().label('Email'),
   birthDate: Yup.string().required().label('Data de nascimento'),
   country: Yup.string().label('País'),
+  image: Yup.string().label('Image'),
 });
 
 export default validationSchema;

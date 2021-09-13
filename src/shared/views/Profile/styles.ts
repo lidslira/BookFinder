@@ -10,6 +10,8 @@ export const Container = styled.KeyboardAvoidingView`
   align-items: center;
 `;
 
+export const ProfileContainer = styled.ScrollView``;
+
 export const TitleText = styled(Text).attrs({
   fontSize: 20,
 })`
@@ -64,6 +66,6 @@ export const Image = styled.Image`
 
 export const ButtonContainer = styled.View`
   align-items: center;
-  width: ${vs(250)}px;
+  width: 100%;
   height: ${vs(200)}px;
 `;

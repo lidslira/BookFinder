@@ -5,19 +5,18 @@ export enum UserTypes {
   LOGIN = 'LOGIN',
   SET_INFORMATION_USER = 'SET_INFORMATION_USER',
 }
+export interface DataFormProps {
+  fullName: string;
+  email: string;
+  country: string;
+  birthDate: string;
+  image: string;
+  password: string;
+}
 
 export interface UserState {
   isLoggedIn: boolean;
-  username: string;
-  password: string;
-  fullname: string;
-  age: number;
-  gender: string;
-  address: {
-    city: string;
-    state: string;
-    country: string;
-  };
+  currentUser: DataFormProps;
 }
 
 export interface LogoutProps extends Action {
@@ -26,8 +25,10 @@ export interface LogoutProps extends Action {
 
 export interface LoginProps extends Action {
   type: UserTypes.LOGIN;
+  payload: {email: string; password: string};
 }
 
 export interface SetInformationUserProps extends Action {
   type: UserTypes.SET_INFORMATION_USER;
+  payload: {data: DataFormProps};
 }

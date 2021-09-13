@@ -9,10 +9,12 @@ import reducers from './ducks';
 
 import {FontState} from './ducks/font/types';
 import {ThemeState} from './ducks/theme/types';
+import {UserState} from './ducks/user/types';
 
 export interface ApplicationState {
   font: FontState;
   theme: ThemeState;
+  user: UserState;
 }
 
 export const persistConfig = {
