@@ -1,17 +1,30 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
+import {ActivityIndicator} from 'react-native';
+import {useSelector, useDispatch} from 'react-redux';
 import {ThemeContext} from 'styled-components';
-import {Alert} from 'react-native';
-import * as S from './styles';
+
 import {Header} from '../../components/Header';
 import Button from '~/shared/components/GlobalButton';
 import {SearchBar} from '../../../components/SearchArea';
 import Image from '../../../assets/group-reading.png';
 
+import {getBooksListAction} from '~/shared/store/ducks/books/actions';
+import {ApplicationState} from '~/shared/store';
+
+import * as S from './styles';
+
 const Home: React.FC = () => {
+  const {loading} = useSelector((state: ApplicationState) => state.books);
+
+  const [searchBook, setSearchBook] = useState<String>('');
+
   const {Colors} = useContext(ThemeContext);
-  const showAlert = () => {
-    Alert.alert(`Searching...`, `Have some patience, darlin'`);
+  const dispatch = useDispatch();
+
+  const getBooksList = () => {
+    dispatch(getBooksListAction(searchBook));
   };
+
   return (
     <S.Container>
       <Header title="bookshelf" />
@@ -21,8 +34,14 @@ const Home: React.FC = () => {
       <SearchBar
         placeholder="Search"
         placeholderTextColor={Colors.PLACEHOLDER}
+        value={searchBook}
+        onChangeText={setSearchBook}
       />
-      <Button action={showAlert} title="pesquisar" />
+      {loading ? (
+        <ActivityIndicator size="large" />
+      ) : (
+        <Button action={getBooksList} title="pesquisar" />
+      )}
       <S.ImageArea>
         <S.Image source={Image} />
       </S.ImageArea>
