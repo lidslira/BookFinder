@@ -10,22 +10,6 @@ export enum BooksTypes {
   GET_BOOK_ERROR = 'GET_BOOK_ERROR',
 }
 
-export interface BookData {
-  id: string;
-  volumeInfo: {
-    title: string;
-    categories?: string[];
-    publisher?: string;
-    authors: string[];
-    description: string;
-    infoLink: string;
-    publishedDate: string;
-    imageLinks?: {
-      thumbnail: string;
-    };
-  };
-}
-
 export interface BooksState {
   loading: boolean;
   books: [];
