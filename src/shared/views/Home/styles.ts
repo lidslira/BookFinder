@@ -7,12 +7,6 @@ export const Container = styled.View`
   background-color: ${({theme}) => theme.Colors.BACKGROUND};
 `;
 
-export const BookListContainer = styled.View`
-  justify-content: flex-start;
-  margin: 20px;
-  background-color: ${({theme}) => theme.Colors.BACKGROUND};
-`;
-
 export const ImageArea = styled.View``;
 
 export const Image = styled.Image`
@@ -22,10 +16,14 @@ export const Image = styled.Image`
 `;
 
 export const TextContainer = styled.View`
-  margin: 40px 0px 20px 0px;
+  margin: 20px 0px 20px 0px;
 `;
 export const HomeText = styled(Text).attrs({
   fontSize: 20,
 })`
   color: ${({theme}) => theme.Colors.TEXT_COLOR};
+`;
+
+export const Indicator = styled.ActivityIndicator`
+  margin-top: 35px;
 `;

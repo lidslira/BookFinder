@@ -3,7 +3,7 @@ export interface VolumeInfoProps {
   categories?: string[];
   publisher?: string;
   authors: string[];
-  description: string;
+  description?: string;
   infoLink: string;
   publishedDate: string;
   imageLinks?: {

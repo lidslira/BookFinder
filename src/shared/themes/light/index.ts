@@ -18,7 +18,7 @@ export default {
   Colors: {
     BLACK: '#000',
     WHITE: '#FFF',
-    LIGHT_PURPLE: '#5D66D3',
+    LIGHT_PURPLE: '#5D66D0',
     PLACEHOLDER: '#b4b4b4',
     gray_dark: '#1c1c1c',
     DARK: '#333333',

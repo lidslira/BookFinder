@@ -1,10 +1,12 @@
 import {Reducer} from 'redux';
+import {UserTypes} from '../user/types';
 import {BooksTypes, BooksState} from './types';
 
 const INITIAL_STATE: BooksState = {
   loading: false,
   books: [],
   booksHasError: false,
+  totalBooksFound: 0,
 
   book: null,
   bookHasError: false,
@@ -15,6 +17,9 @@ const reducer: Reducer<BooksState> = (
   {type, payload},
 ) => {
   switch (type) {
+    case UserTypes.LOGOUT:
+      return INITIAL_STATE;
+
     case BooksTypes.GET_BOOKS_LIST:
       return {
         ...state,
@@ -26,6 +31,7 @@ const reducer: Reducer<BooksState> = (
         ...state,
         loading: false,
         books: payload.books,
+        totalBooksFound: payload.totalItems,
         booksHasError: false,
       };
 

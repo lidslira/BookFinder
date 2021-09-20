@@ -1,4 +1,5 @@
 import {Action} from 'redux';
+import {VolumeInfoProps} from '~/dtos';
 
 export enum BooksTypes {
   GET_BOOKS_LIST = 'GET_BOOKS_LIST',
@@ -13,6 +14,7 @@ export enum BooksTypes {
 export interface BooksState {
   loading: boolean;
   books: [];
+  totalBooksFound: number;
   booksHasError: boolean;
   book: string | null;
   bookHasError: boolean;
@@ -25,7 +27,7 @@ export interface GetBooksListProps extends Action {
 
 export interface GetBooksListSuccessProps extends Action {
   type: BooksTypes.GET_BOOKS_LIST_SUCCESS;
-  payload: {books: any[]};
+  payload: {books: VolumeInfoProps; totalItems: number};
 }
 
 export interface GetBooksListErrorProps extends Action {

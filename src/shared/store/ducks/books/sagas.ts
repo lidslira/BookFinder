@@ -23,7 +23,12 @@ function* getBooksSagas(action: GetBooksListProps) {
     );
 
     if (response.status >= 200 && response.status < 300) {
-      yield put(getBooksListSuccessAction(response.data.items));
+      yield put(
+        getBooksListSuccessAction(
+          response.data.items,
+          response.data.totalItems,
+        ),
+      );
     } else {
       yield put(getBooksListErrorAction());
     }

@@ -1,11 +1,12 @@
 import React, {useContext, useState} from 'react';
-import {ActivityIndicator} from 'react-native';
+import {Alert} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 import {ThemeContext} from 'styled-components';
 
 import {Header} from '../../components/Header';
 import Button from '~/shared/components/GlobalButton';
 import {SearchBar} from '../../../components/SearchArea';
+import BookComponent from '~/components/BooksList';
 import Image from '../../../assets/group-reading.png';
 
 import {getBooksListAction} from '~/shared/store/ducks/books/actions';
@@ -14,7 +15,9 @@ import {ApplicationState} from '~/shared/store';
 import * as S from './styles';
 
 const Home: React.FC = () => {
-  const {loading} = useSelector((state: ApplicationState) => state.books);
+  const {loading, books} = useSelector(
+    (state: ApplicationState) => state.books,
+  );
 
   const [searchBook, setSearchBook] = useState<String>('');
 
@@ -23,6 +26,7 @@ const Home: React.FC = () => {
 
   const getBooksList = () => {
     dispatch(getBooksListAction(searchBook));
+    Alert.alert('Suas informações foram salvas');
   };
 
   return (
@@ -38,13 +42,17 @@ const Home: React.FC = () => {
         onChangeText={setSearchBook}
       />
       {loading ? (
-        <ActivityIndicator size="large" />
+        <S.Indicator size="large" />
       ) : (
         <Button action={getBooksList} title="pesquisar" />
       )}
-      <S.ImageArea>
-        <S.Image source={Image} />
-      </S.ImageArea>
+      {books.length ? (
+        <BookComponent />
+      ) : (
+        <S.ImageArea>
+          <S.Image source={Image} />
+        </S.ImageArea>
+      )}
     </S.Container>
   );
 };
