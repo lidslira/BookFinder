@@ -7,8 +7,13 @@ import {useSelector} from 'react-redux';
 
 import Tabs from './tabNavigators';
 import Login from '~/shared/views/Login';
+import BookInfomation from '~/shared/views/BookInformation';
 
-import {LOGIN_SCREEN, TABS_SCREEN} from '~/shared/constants/routes';
+import {
+  LOGIN_SCREEN,
+  TABS_SCREEN,
+  BOOK_INFORMATION,
+} from '~/shared/constants/routes';
 import Header from '~/shared/components/AccessibilityHeader';
 
 import {createTheme} from '~/shared/utils/theme';
@@ -30,6 +35,12 @@ const RootStack: React.FC = () => {
               <Stack.Screen
                 name={TABS_SCREEN}
                 component={Tabs}
+                options={{header: () => <Header />}}
+              />
+
+              <Stack.Screen
+                name={BOOK_INFORMATION}
+                component={BookInfomation}
                 options={{header: () => <Header />}}
               />
             </Stack.Navigator>

@@ -75,7 +75,7 @@ export const Button = styled(Pressable).attrs<ButtonProps>(
   flex-direction: row;
   border-radius: 6px;
   border-width: 1px;
-  margin: 30px;
+  margin: 20px;
 `;
 
 export const ButtonText = styled(Text).attrs<ButtonTextProps>(({theme}) => ({

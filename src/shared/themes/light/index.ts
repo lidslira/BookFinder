@@ -34,6 +34,7 @@ export default {
     BUTTON_TEXT: '#FFF',
     ICON_COLOR: '#353A85',
     ACCESSIBILITY: '#FFF',
+    CLICKABLE_TEXT: '#C12126',
     INPUT: '#000',
     TAB_ICON_FOCUS: '#353A85',
     TAB_ICON: '#1c1c1c',

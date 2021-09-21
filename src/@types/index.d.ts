@@ -21,6 +21,7 @@ type ColorsProps = {
   ICON_COLOR: string;
   ACCESSIBILITY: string;
   BACKGROUND: string;
+  CLICKABLE_TEXT: string;
   BUTTON_TEXT: string;
   TEXT_COLOR: string;
   INPUT: string;

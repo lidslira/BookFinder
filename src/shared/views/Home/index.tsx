@@ -1,5 +1,4 @@
 import React, {useContext, useState} from 'react';
-import {Alert} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 import {ThemeContext} from 'styled-components';
 
@@ -26,7 +25,6 @@ const Home: React.FC = () => {
 
   const getBooksList = () => {
     dispatch(getBooksListAction(searchBook));
-    Alert.alert('Suas informações foram salvas');
   };
 
   return (
@@ -44,7 +42,7 @@ const Home: React.FC = () => {
       {loading ? (
         <S.Indicator size="large" />
       ) : (
-        <Button action={getBooksList} title="pesquisar" />
+        <Button action={getBooksList} title="search" />
       )}
       {books.length ? (
         <BookComponent />

@@ -32,6 +32,7 @@ export default {
     ACCESSIBILITY: '#FFFF00',
     COLOR_APPLICATION: '#000',
     BUTTON_COLOR: '#FFFF00',
+    CLICKABLE_TEXT: '#FFFF00',
     BUTTON_TEXT: '#000',
     ICON_COLOR: '#FFF',
     INPUT: '#FFFF00',
