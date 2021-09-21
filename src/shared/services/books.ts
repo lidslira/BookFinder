@@ -8,3 +8,12 @@ export const searchBooks = async (text: string) => {
     return null;
   }
 };
+
+export const showBook = async (id: string) => {
+  try {
+    const response = await request.get('', id);
+    return response;
+  } catch {
+    return null;
+  }
+};

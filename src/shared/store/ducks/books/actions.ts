@@ -1,5 +1,5 @@
 import {action} from 'typesafe-actions';
-import {VolumeInfoProps} from '~/dtos';
+import {VolumeInfoProps, Book} from '~/dtos';
 
 import {
   BooksTypes,
@@ -20,9 +20,9 @@ export const getBooksListSuccessAction = (
   action(BooksTypes.GET_BOOKS_LIST_SUCCESS, {books, totalItems});
 export const getBooksListErrorAction = (): GetBooksListErrorProps =>
   action(BooksTypes.GET_BOOKS_LIST_ERROR);
-export const getBookAction = (id: any): GetBookProps =>
+export const getBookAction = (id: string): GetBookProps =>
   action(BooksTypes.GET_BOOK, {id});
-export const getBookSuccessAction = (book: any): GetBookSuccessProps =>
+export const getBookSuccessAction = (book: Book): GetBookSuccessProps =>
   action(BooksTypes.GET_BOOK_SUCCESS, {book});
 export const getBookErrorAction = (): GetBookErrorProps =>
   action(BooksTypes.GET_BOOK_ERROR);

@@ -1,10 +1,15 @@
 import {all, takeLatest, call, put} from 'redux-saga/effects';
 
-import {searchBooks} from '~/shared/services/books';
+import {searchBooks, showBook} from '~/shared/services/books';
 
-import {BooksTypes, GetBooksListProps} from './types';
+import {BooksTypes, GetBooksListProps, GetBookProps} from './types';
 
-import {getBooksListSuccessAction, getBooksListErrorAction} from './actions';
+import {
+  getBooksListSuccessAction,
+  getBooksListErrorAction,
+  getBookSuccessAction,
+  getBookErrorAction,
+} from './actions';
 
 export interface ResponseGenerator {
   config?: any;
@@ -37,6 +42,23 @@ function* getBooksSagas(action: GetBooksListProps) {
   }
 }
 
+function* showBookSagas(action: GetBookProps) {
+  try {
+    const response: ResponseGenerator = yield call(showBook, action.payload.id);
+
+    if (response.status >= 200 && response.status < 300) {
+      yield put(getBookSuccessAction(response.data.items));
+    } else {
+      yield put(getBookErrorAction());
+    }
+  } catch {
+    yield put(getBookErrorAction());
+  }
+}
+
 export default function* watchSaga() {
-  yield all([takeLatest(BooksTypes.GET_BOOKS_LIST, getBooksSagas)]);
+  yield all([
+    takeLatest(BooksTypes.GET_BOOKS_LIST, getBooksSagas),
+    takeLatest(BooksTypes.GET_BOOK, showBookSagas),
+  ]);
 }

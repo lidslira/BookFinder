@@ -8,7 +8,27 @@ const INITIAL_STATE: BooksState = {
   booksHasError: false,
   totalBooksFound: 0,
 
-  book: null,
+  book: {
+    kind: '',
+    id: '',
+    etag: '',
+    selfLink: '',
+    volumeInfo: {
+      title: '',
+      categories: [''],
+      publisher: '',
+      authors: [''],
+      description: '',
+      infoLink: '',
+      publishedDate: '',
+      imageLinks: {
+        thumbnail: '',
+      },
+    },
+    saleInfo: [],
+    accessInfo: [],
+    searchInfo: [],
+  },
   bookHasError: false,
 };
 
@@ -58,7 +78,6 @@ const reducer: Reducer<BooksState> = (
         ...state,
         loading: false,
         bookHasError: true,
-        book: null,
       };
     default:
       return state;
