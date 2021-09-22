@@ -14,7 +14,7 @@ interface InputProps {
   iconLeft?: string;
   error?: any;
   labelSameLine?: boolean;
-  actionIcon?: () => void;
+  actionIconRight?: () => void;
 }
 
 const Input: React.FC<TextInputProps & InputProps> = ({
@@ -23,7 +23,7 @@ const Input: React.FC<TextInputProps & InputProps> = ({
   iconLeft,
   labelSameLine,
   error,
-  actionIcon,
+  actionIconRight,
   ...rest
 }) => {
   const {Sizes} = useContext(ThemeContext);
@@ -43,8 +43,8 @@ const Input: React.FC<TextInputProps & InputProps> = ({
               iconRight={iconRight}
             />
             {iconRight && (
-              <S.Touchable onPress={() => actionIcon && actionIcon()}>
-                <S.IconInput name={iconRight} />
+              <S.Touchable onPress={() => actionIconRight && actionIconRight()}>
+                <S.RightIconInput name={iconRight} />
               </S.Touchable>
             )}
           </S.ContainerInput>

@@ -12,7 +12,7 @@ export const ImageArea = styled.View``;
 export const Image = styled.Image`
   width: 395px;
   height: 240px;
-  margin-top: 30px;
+  margin-top: 100px;
 `;
 
 export const TextContainer = styled.View`

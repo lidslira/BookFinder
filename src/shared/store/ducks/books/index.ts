@@ -79,6 +79,10 @@ const reducer: Reducer<BooksState> = (
         loading: false,
         bookHasError: true,
       };
+
+    case BooksTypes.CLEAN_BOOK_LIST:
+      return INITIAL_STATE;
+
     default:
       return state;
   }

@@ -33,6 +33,7 @@ export default {
     BUTTON_COLOR: '#353A85',
     BUTTON_TEXT: '#FFF',
     ICON_COLOR: '#353A85',
+    CLICKABLE_ICON: '#353A85',
     ACCESSIBILITY: '#FFF',
     CLICKABLE_TEXT: '#C12126',
     INPUT: '#000',

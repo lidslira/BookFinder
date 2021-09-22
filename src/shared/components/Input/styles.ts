@@ -68,7 +68,7 @@ export const Input = styled.TextInput.attrs<TextInputProps>(
   }),
 )<TextInputProps>`
   width: ${({iconRight}) => (iconRight ? 90 : 100)}%;
-  margin-bottom: ${vs(10)}px;
+  margin-bottom: ${vs(5)}px;
   margin-left: 10px;
   color: ${({theme}) => theme.Colors.TEXT_COLOR};
 `;
@@ -87,4 +87,14 @@ export const IconInput = styled(Icon).attrs<IconInputProps>(
   }),
 )<IconInputProps>`
   color: ${({iconColor, theme}) => iconColor || theme.Colors.ICON_COLOR};
+`;
+
+export const RightIconInput = styled(Icon).attrs<IconInputProps>(
+  ({theme, name, iconType}) => ({
+    name,
+    size: theme.Sizes.ICON_SIZE,
+    type: iconType,
+  }),
+)<IconInputProps>`
+  color: ${({iconColor, theme}) => iconColor || theme.Colors.CLICKABLE_ICON};
 `;

@@ -44,17 +44,17 @@ const BooksInformation: React.FC = () => {
 
         <S.ContainerDetails>
           <S.ContainerTitleDetails>
-            <S.DetailsTitleText>Authors</S.DetailsTitleText>
+            <S.DetailsTitleText>Autor(es)</S.DetailsTitleText>
             <S.DetailsText>{authorDisplay}</S.DetailsText>
           </S.ContainerTitleDetails>
 
           <S.ContainerTitleDetails>
-            <S.DetailsTitleText>Publication date</S.DetailsTitleText>
+            <S.DetailsTitleText>Data de publicação</S.DetailsTitleText>
             <S.DetailsText>{book.volumeInfo.publishedDate}</S.DetailsText>
           </S.ContainerTitleDetails>
 
           <S.ContainerTitleDetails>
-            <S.DetailsTitleText>More information</S.DetailsTitleText>
+            <S.DetailsTitleText>Mais informações</S.DetailsTitleText>
             <S.DetailsText>
               É este livro que está procurando? {`\n`}
               <Text

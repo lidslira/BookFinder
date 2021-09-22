@@ -1,5 +1,5 @@
 import React, {useState, useContext} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {ThemeContext} from 'styled-components';
 import {useFormik} from 'formik';
 import {useNavigation} from '@react-navigation/core';
@@ -61,7 +61,7 @@ const Login: React.FC = () => {
           value={values.password}
           onChangeText={handleChange('password')}
           secureTextEntry={!showPassword}
-          actionIcon={() => setShowPassword(!showPassword)}
+          actionIconRight={() => setShowPassword(!showPassword)}
           iconRight={showPassword ? 'eye-off' : 'eye'}
           error={errors.password}
         />

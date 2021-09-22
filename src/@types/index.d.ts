@@ -24,6 +24,7 @@ type ColorsProps = {
   CLICKABLE_TEXT: string;
   BUTTON_TEXT: string;
   TEXT_COLOR: string;
+  CLICKABLE_ICON: string;
   INPUT: string;
   TAB_ICON_FOCUS: string;
   TAB_ICON: string;

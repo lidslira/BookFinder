@@ -82,12 +82,8 @@ const BottomTab: React.FC<BottomTabProps> = ({
           }
           type="ionicons"
           color={isFocused ? Colors.TAB_ICON_FOCUS : Colors.TAB_ICON}
-          size={20}
+          size={25}
         />
-
-        {/* <TitleScreen color={isFocused ? Colors.BLACK : Colors.GRAY}>
-          {nameScreen}
-        </TitleScreen> */}
       </Touchable>
     );
   };

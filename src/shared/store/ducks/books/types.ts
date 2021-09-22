@@ -9,6 +9,8 @@ export enum BooksTypes {
   GET_BOOK = 'GET_BOOK',
   GET_BOOK_SUCCESS = 'GET_BOOK_SUCCESS',
   GET_BOOK_ERROR = 'GET_BOOK_ERROR',
+
+  CLEAN_BOOK_LIST = 'CLEAN_BOOK_LIST',
 }
 
 export interface BooksState {
@@ -22,7 +24,7 @@ export interface BooksState {
 
 export interface GetBooksListProps extends Action {
   type: BooksTypes.GET_BOOKS_LIST;
-  payload: {text: string};
+  payload: {text: string; index: number};
 }
 
 export interface GetBooksListSuccessProps extends Action {
@@ -45,4 +47,8 @@ export interface GetBookSuccessProps extends Action {
 }
 export interface GetBookErrorProps extends Action {
   type: BooksTypes.GET_BOOK_ERROR;
+}
+
+export interface CleanBookListProps extends Action {
+  type: BooksTypes.CLEAN_BOOK_LIST;
 }
