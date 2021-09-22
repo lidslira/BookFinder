@@ -45,12 +45,16 @@ const BooksInformation: React.FC = () => {
         <S.ContainerDetails>
           <S.ContainerTitleDetails>
             <S.DetailsTitleText>Autor(es)</S.DetailsTitleText>
-            <S.DetailsText>{authorDisplay}</S.DetailsText>
+            <S.DetailsText>{authorDisplay || 'Não informado'}</S.DetailsText>
           </S.ContainerTitleDetails>
 
           <S.ContainerTitleDetails>
             <S.DetailsTitleText>Data de publicação</S.DetailsTitleText>
-            <S.DetailsText>{book.volumeInfo.publishedDate}</S.DetailsText>
+            <S.DetailsText>
+              {book.volumeInfo.publishedDate
+                ? book.volumeInfo.publishedDate
+                : 'Não innformada'}
+            </S.DetailsText>
           </S.ContainerTitleDetails>
 
           <S.ContainerTitleDetails>
@@ -71,7 +75,11 @@ const BooksInformation: React.FC = () => {
             </S.DetailsText>
           </S.ContainerTitleDetails>
           <S.DetailsTitleText>Descrição</S.DetailsTitleText>
-          <S.DescriptionText>{book.volumeInfo.description}</S.DescriptionText>
+          <S.DescriptionText>
+            {book.volumeInfo.description
+              ? book.volumeInfo.description
+              : 'Não informada'}
+          </S.DescriptionText>
         </S.ContainerDetails>
       </S.BookInfoContainer>
     </S.Container>

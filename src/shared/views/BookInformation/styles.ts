@@ -48,13 +48,14 @@ export const DescriptionText = styled(Text).attrs({
 export const BookName = styled(Text).attrs({
   fontSize: 22,
 })`
-  font-weight: 700;
+  font-weight: 600;
   color: ${({theme}) => theme.Colors.TEXT_COLOR};
 `;
 
 export const ContainerName = styled.View`
   width: 100%;
-  margin-bottom: ${vs(20)}px;
+  margin-bottom: ${vs(10)}px;
+  margin-top: ${vs(10)}px;
   justify-content: center;
   align-items: center;
   padding: 10px;

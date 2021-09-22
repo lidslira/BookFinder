@@ -11,7 +11,7 @@ import * as S from './styles';
 import Button from '~/shared/components/GlobalButton';
 import {TABS_SCREEN} from '~/shared/constants/routes';
 import Input from '~/shared/components/Input';
-import Logo from '~/assets/bookfinder.png';
+import Logo from '~/assets/images/bookfinder.png';
 
 interface DataFormProps {
   email: string;

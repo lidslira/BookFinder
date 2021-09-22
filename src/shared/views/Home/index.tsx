@@ -7,7 +7,7 @@ import {Header} from '../../components/Header';
 import Button from '~/shared/components/GlobalButton';
 import Input from '~/shared/components/Input';
 import BookComponent from '~/components/BooksList';
-import Image from '../../../assets/group-reading.png';
+import Image from '../../../assets/images/group-reading.png';
 
 import {
   getBooksListAction,
