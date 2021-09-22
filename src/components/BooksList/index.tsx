@@ -1,4 +1,5 @@
 import React from 'react';
+import {View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
 
@@ -8,11 +9,16 @@ import {getBookAction} from '~/shared/store/ducks/books/actions';
 import {Book} from '~/dtos';
 import {BOOK_INFORMATION} from '~/shared/constants/routes';
 
-const BooksComponent: React.FC = () => {
+interface BooksListProps {
+  TextSearch: string;
+  getBooks: () => void;
+}
+
+const BooksComponent: React.FC<BooksListProps> = ({TextSearch, getBooks}) => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
 
-  const {books, totalBooksFound} = useSelector(
+  const {books, totalBooksFound, loading} = useSelector(
     (state: ApplicationState) => state.books,
   );
 
@@ -39,10 +45,15 @@ const BooksComponent: React.FC = () => {
       <S.TitleText> Foram encontrados {totalBooksFound} livros</S.TitleText>
       <S.BookList
         data={books}
-        extraData={books}
+        extraData={[books, TextSearch]}
         renderItem={renderItem}
         keyExtractor={(item: any) => item.id.toString()}
         showsVerticalScrollIndicator={false}
+        ListFooterComponent={<View style={{height: 100}} />}
+        refreshing={loading}
+        onRefresh={() => getBooks()}
+        onEndReached={() => getBooks()}
+        onEndReachedThreshold={0.1}
       />
     </S.Container>
   );

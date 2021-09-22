@@ -1,14 +1,18 @@
 import React, {useContext, useState} from 'react';
+import {Alert} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 import {ThemeContext} from 'styled-components';
 
 import {Header} from '../../components/Header';
 import Button from '~/shared/components/GlobalButton';
-import {SearchBar} from '../../../components/SearchArea';
+import Input from '~/shared/components/Input';
 import BookComponent from '~/components/BooksList';
 import Image from '../../../assets/group-reading.png';
 
-import {getBooksListAction} from '~/shared/store/ducks/books/actions';
+import {
+  getBooksListAction,
+  cleanBookListAction,
+} from '~/shared/store/ducks/books/actions';
 import {ApplicationState} from '~/shared/store';
 
 import * as S from './styles';
@@ -18,13 +22,23 @@ const Home: React.FC = () => {
     (state: ApplicationState) => state.books,
   );
 
-  const [searchBook, setSearchBook] = useState<String>('');
+  const [searchBook, setSearchBook] = useState<string>('');
 
   const {Colors} = useContext(ThemeContext);
   const dispatch = useDispatch();
 
-  const getBooksList = () => {
-    dispatch(getBooksListAction(searchBook));
+  const getBooksList = (index: number) => {
+    dispatch(getBooksListAction(searchBook, index));
+  };
+  const cleanBookList = () => {
+    dispatch(cleanBookListAction());
+  };
+
+  const showAlertReset = () => {
+    Alert.alert(`Atenção`, `Você tem certeza que deseja limpar a lista?`, [
+      {text: 'Cancelar', style: 'cancel'},
+      {text: 'Sim', onPress: () => cleanBookList()},
+    ]);
   };
 
   return (
@@ -33,19 +47,25 @@ const Home: React.FC = () => {
       <S.TextContainer>
         <S.HomeText> Qual o livro que deseja encontrar? </S.HomeText>
       </S.TextContainer>
-      <SearchBar
+      <Input
+        iconLeft="magnify"
         placeholder="Search"
         placeholderTextColor={Colors.PLACEHOLDER}
         value={searchBook}
         onChangeText={setSearchBook}
+        iconRight="autorenew"
+        actionIconRight={() => showAlertReset()}
       />
       {loading ? (
         <S.Indicator size="large" />
-      ) : (
-        <Button action={getBooksList} title="search" />
+      ) : books.length ? null : (
+        <Button action={() => getBooksList(0)} title="search" />
       )}
       {books.length ? (
-        <BookComponent />
+        <BookComponent
+          TextSearch={searchBook}
+          getBooks={() => getBooksList(books.length)}
+        />
       ) : (
         <S.ImageArea>
           <S.Image source={Image} />

@@ -1,4 +1,4 @@
-import {all, takeLatest, call, put} from 'redux-saga/effects';
+import {all, takeLatest, call, put, select} from 'redux-saga/effects';
 
 import {searchBooks, showBook} from '~/shared/services/books';
 
@@ -10,6 +10,8 @@ import {
   getBookSuccessAction,
   getBookErrorAction,
 } from './actions';
+
+import {ApplicationState} from '~/shared/store/index';
 
 export interface ResponseGenerator {
   config?: any;
@@ -25,15 +27,21 @@ function* getBooksSagas(action: GetBooksListProps) {
     const response: ResponseGenerator = yield call(
       searchBooks,
       action.payload.text,
+      action.payload.index,
     );
 
     if (response.status >= 200 && response.status < 300) {
-      yield put(
-        getBooksListSuccessAction(
-          response.data.items,
-          response.data.totalItems,
-        ),
-      );
+      const {books} = yield select((state: ApplicationState) => state.books);
+
+      let moreBooks = [];
+
+      if (action.payload.index === 0) {
+        moreBooks = response.data.items;
+      } else {
+        moreBooks = [...books, ...response.data.items];
+      }
+
+      yield put(getBooksListSuccessAction(moreBooks, response.data.totalItems));
     } else {
       yield put(getBooksListErrorAction());
     }
