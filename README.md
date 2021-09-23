@@ -40,11 +40,11 @@ This project is a task of the Lead Dell mentoring program. It was assigned in or
 ## 📍 Functionalities
 <ul>
   <li>Searchs the books in Google Book API</li>
-  <li>Lists the books founded showing the name and the author</li>
+  <li>Lists found books showing name and author</li>
   <li>Shows more informations about the wanted book </li>
-  <li>Accessibility options:</li>
-    <li>High contrast</li>
-    <li>Increase, decrease and restore font to its original size</li>
+  <li>Accessibility options: </li>
+    <ul>   High contrast</ul>
+    <ul>   Increase, decrease and restore font to its original size</ul>
 </ul>
 
 ##  📦 How to install the project
