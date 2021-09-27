@@ -1,7 +1,7 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 
-import Home from '~/shared/views/Home';
+import Home from '~/modules/Book/views/Home';
 
 import {HOME_SCREEN} from '~/shared/constants/routes';
 

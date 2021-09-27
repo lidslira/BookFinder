@@ -13,8 +13,8 @@ import {
 
 import Button from '~/shared/components/GlobalButton';
 import Input from '~/shared/components/Input';
-import ModalCamera from '~/components/ModalCamera';
-import {Header} from '../../components/Header';
+import ModalCamera from '~/modules/User/components/ModalCamera';
+import {Header} from '../../../shared/components/Header';
 
 import * as S from './styles';
 import {ApplicationState} from '~/shared/store';

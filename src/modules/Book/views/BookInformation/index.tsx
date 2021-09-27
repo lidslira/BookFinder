@@ -1,14 +1,18 @@
 import React, {useContext} from 'react';
 import {Image, Linking, Text} from 'react-native';
 import {useRoute} from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/core';
 
 import {s} from 'react-native-size-matters';
 import {ThemeContext} from 'styled-components';
 import {Header} from '~/shared/components/Header';
+
 import * as S from './styles';
 
 const BooksInformation: React.FC = () => {
   const {Colors} = useContext(ThemeContext);
+
+  const navigation = useNavigation();
 
   const route = useRoute();
   const {book} = route.params;
@@ -20,9 +24,13 @@ const BooksInformation: React.FC = () => {
     authorDisplay = book.volumeInfo.authors?.join('; ');
   }
 
+  const handleGoBack = () => {
+    navigation.goBack();
+  };
+
   return (
     <S.Container>
-      <Header title="informações" />
+      <Header title="informações" isFocused action={() => handleGoBack()} />
       <S.BookInfoContainer>
         {thumbnail && (
           <S.ContainerImage>

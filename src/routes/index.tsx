@@ -7,7 +7,7 @@ import {useSelector} from 'react-redux';
 
 import Tabs from './tabNavigators';
 import Login from '~/shared/views/Login';
-import BookInfomation from '~/shared/views/BookInformation';
+import BookInfomation from '~/modules/Book/views/BookInformation';
 
 import {
   LOGIN_SCREEN,
