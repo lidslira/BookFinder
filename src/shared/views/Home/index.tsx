@@ -55,6 +55,7 @@ const Home: React.FC = () => {
         onChangeText={setSearchBook}
         iconRight="autorenew"
         actionIconRight={() => showAlertReset()}
+        onSubmitEditing={() => getBooksList(0)}
       />
       {loading ? (
         <S.Indicator size="large" />
